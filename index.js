@@ -4,22 +4,24 @@ const svg = canvas.append('svg')
             .attr('height', 600)
             .attr('width', 600); // get a new tag element inside the selector component
 
+const group = svg.append('g')
+                .attr('transform', 'translate(50,100)') // group
 // append shapes to svg container
 
-svg.append('rect')
+group.append('rect')
     .attr('width', 200)
     .attr('height', 100)
     .attr('fill', 'blue')
     .attr('x', 20)
     .attr('y', 20);
 
-svg.append('circle')
+group.append('circle')
 .attr('r', 50)
 .attr('cx', 300)
 .attr('cy', 70)
 .attr('fill', 'pink');
 
-svg.append('line')
+group.append('line')
     .attr('x1', 370)
     .attr('x2', 400)
     .attr('y1', 20)
@@ -31,5 +33,7 @@ svg.append('text')
     .attr('y', 200)
     .attr('fill', 'grey')
     .text('hello, Marshall')
-    .style('font-family', 'ariel')
+    .style('font-family', 'ariel');
+
+
 
