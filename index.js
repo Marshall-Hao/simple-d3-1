@@ -35,18 +35,39 @@
 //     .text('hello, Marshall')
 //     .style('font-family', 'ariel');
 
-const data = [
-    {
-        width: 200,
-        height: 100,
-        fill: 'purple'
-    }
-]
+// const data = [
+//     {
+//         width: 200,
+//         height: 100,
+//         fill: 'purple'
+//     }
+// ]
 
-const svg =d3.select('svg');
+// const svg =d3.select('svg');
 
-const rect = svg.select('rect')
-            .data(data)
-            .attr('width', (d) =>{return d.width})
-            .attr('height', (d) => {return d.height})
-            .attr('fill', (d) => {return d.fill});
+// const rect = svg.select('rect')
+//             .data(data)
+//             .attr('width', (d) =>{return d.width})
+//             .attr('height', (d) => {return d.height})
+//             .attr('fill', (d) => {return d.fill});
+
+//const svg container
+const svg = d3.select('svg')
+
+d3.json('planet.json').then(data => {
+    const circs = svg.selectAll('circle')
+                    .data(data);
+
+    circs.attr('cy', 200)
+        .attr('cx', d => d.distance)
+        .attr('r', r=> r.radius)
+        .attr('fill', d=> d.fill);
+    
+    // append the enter selection to the DOM
+    circs.enter()
+        .append('circle')
+        .attr('cy', 200)
+        .attr('cx', d => d.distance)
+        .attr('r', r=> r.radius)
+        .attr('fill', d=> d.fill);
+});
